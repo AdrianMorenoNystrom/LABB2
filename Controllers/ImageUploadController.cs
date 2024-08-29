@@ -102,7 +102,6 @@ namespace LABB2.Controllers
                     var analyzedImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "TempImages", $"{Path.GetFileNameWithoutExtension(imageFile.FileName)}_analyzed.jpg");
                     image.Save(analyzedImagePath, ImageFormat.Jpeg);
 
-                    ViewBag.AnnotatedImagePath = "/TempImages/" + Path.GetFileName(analyzedImagePath);
                 }
                 // Generate the thumbnail
                 using (var imageStream = imageFile.OpenReadStream())
