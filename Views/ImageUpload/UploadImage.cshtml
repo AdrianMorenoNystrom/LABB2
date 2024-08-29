@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Bildanalys";
+}
+
+@* Form för att ladda upp bild *@
+
+<h2>Ladda upp en bild för analys</h2>
+<form asp-action="AnalyzeImage" method="post" enctype="multipart/form-data">
+    <input type="file" name="imageFile" />
+    <input type="submit" value="Ladda upp och analysera" />
+    <h3>Uploaded image: </h3><img src="@ViewBag.ThumbnailPath" alt="Thumbnail" />
+</form>
+
+@if (ViewBag.ImageDescription != null)
+{
+    <div>
+        <h3>Beskrivning:</h3> <p>@ViewBag.ImageDescription</p>
+        <h3>Taggar:</h3>
+        @foreach (var tag in ViewBag.Imagetags)
+        {
+            <li>@tag.Name</li>
+        }
+        <h3>Kategorier:</h3><p> @ViewBag.ImageCategories</p>
+        <h3>Märken:</h3> <p>@ViewBag.ImageBrands</p>
+        <h3>Objekt:</h3> <p>@ViewBag.ImageObjects</p>
+        <h3>Vuxet innehåll:</h3> <p>@ViewBag.AdultContent</p>
+    </div>
+
+
+    <h3>Analyserad Bild:</h3>
+    <img src="@ViewBag.AnnotatedImagePath" alt="Annotated Image" />
+
+}
